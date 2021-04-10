@@ -7,8 +7,10 @@ const AddUser = ({ addUserDetail, showValidation }) => {
 
     const addUser = (e) => {
         addUserDetail({ name: nameInput.current.value, credits: creditsInput.current.value });
-        nameInput.current.value = '';
-        creditsInput.current.value = '';
+        if (nameInput.current.value && creditsInput.current.value) {
+            nameInput.current.value = '';
+            creditsInput.current.value = '';
+        }
         e.preventDefault();
     }
 
