@@ -2,8 +2,9 @@ import './App.css';
 import Leaderboard from './components/Leaderboard';
 import Search from './components/Search';
 import AddUser from './components/AddUser';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios'
+import { debounce } from 'lodash';
 
 function App() {
 
@@ -44,12 +45,18 @@ function App() {
     })
   }
 
+  const debounceSearch = useCallback(
+    debounce((searchValue) => {
+      const filteredUser = userDataArray.filter((user) => {
+        return user.name.toLowerCase().startsWith(searchValue.toLowerCase());
+      });
+      setFilteredArray(sortArray(filteredUser));
+    }, 1000)
+  )
+
   const searchHandler = (event) => {
     const searchValue = event.target.value;
-    const filteredUser = userDataArray.filter((user) => {
-      return user.name.toLowerCase().startsWith(searchValue.toLowerCase());
-    });
-    setFilteredArray(sortArray(filteredUser));
+    debounceSearch(searchValue); //adding debounce to ensure multiple request are not fired when user types fast
   }
 
   return (
