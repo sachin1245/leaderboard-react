@@ -21,7 +21,7 @@ UserDetail.defultProps = {
     index: 0,
 }
 
-UserDetail.PropTypes = {
+UserDetail.propTypes = {
     user: PropTypes.shape({
         avatar: PropTypes.string,
         name: PropTypes.string,

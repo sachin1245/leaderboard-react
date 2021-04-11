@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import PropTypes from "prop-types";
 
 const AddUser = ({ addUserDetail, showValidation }) => {
 
@@ -16,7 +17,7 @@ const AddUser = ({ addUserDetail, showValidation }) => {
 
     return (
         <>
-            <form className="bg-white  rounded px-8 pt-6 pb-8 mb-4 grid justify-items-center">
+            <form className="bg-white rounded px-8 pt-6 pb-8 mb-4 grid justify-items-center">
                 <input placeholder="Name" className="mb-4 shadow appearance-none border rounded w-half py-2 px-3 text-grey-darker" ref={nameInput} type="text" id="name" required="true" />
                 <input placeholder="credits" className="mb-4 shadow appearance-none border rounded w-half py-2 px-3 text-grey-darker" ref={creditsInput} type="number" id="credits" required="true" />
                 <br />
@@ -29,6 +30,16 @@ const AddUser = ({ addUserDetail, showValidation }) => {
             </form>
         </>
     )
+}
+
+AddUser.defaultProps = {
+    addUserDetail: () => {},
+    showValidation: false
+}
+
+AddUser.propTypes = {
+    addUserDetail: PropTypes.func,
+    showValidation: PropTypes.bool,
 }
 
 export default AddUser;
