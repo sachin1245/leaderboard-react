@@ -18,8 +18,8 @@ const AddUser = ({ addUserDetail, showValidation }) => {
     return (
         <>
             <form className="bg-white rounded px-8 pt-6 pb-8 mb-4 grid justify-items-center">
-                <input placeholder="Name" className="mb-4 shadow appearance-none border rounded w-half py-2 px-3 text-grey-darker" ref={nameInput} type="text" id="name" required="true" />
-                <input placeholder="credits" className="mb-4 shadow appearance-none border rounded w-half py-2 px-3 text-grey-darker" ref={creditsInput} type="number" id="credits" required="true" />
+                <input placeholder="Name" className="mb-4 shadow appearance-none border rounded w-half py-2 px-3 text-grey-darker" ref={nameInput} type="text" id="name" />
+                <input placeholder="credits" className="mb-4 shadow appearance-none border rounded w-half py-2 px-3 text-grey-darker" ref={creditsInput} type="number" id="credits" />
                 <br />
                 {showValidation &&
                     (
@@ -33,7 +33,7 @@ const AddUser = ({ addUserDetail, showValidation }) => {
 }
 
 AddUser.defaultProps = {
-    addUserDetail: () => {},
+    addUserDetail: () => { },
     showValidation: false
 }
 

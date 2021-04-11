@@ -18,24 +18,25 @@ function App() {
       setUserDataArray([...res.data]);
       setFilteredArray(sortArray([...res.data]));
     })
-  }, []);
+  }, []); // load user data on first load
 
   useEffect(() => {
     setFilteredArray(sortArray([...userDataArray]));
-  }, [userDataArray]);
+  }, [userDataArray]); // sort filtered array everytime userDataArray changes
 
   const addUserDetail = (userDetail) => {
     if (userDetail.name && userDetail.credits) {
       setShowValidation(false);
+      userDetail.credits = parseInt(userDetail.credits, 10);
       axios.post('http://localhost:3001/players/add-player', userDetail).then(
         (res) => {
           setUserDataArray(sortArray([...userDataArray, res.data]));
         }
       )
     } else {
-      setShowValidation(true);
+      setShowValidation(true); // show validation error if one of the form field is empty
     }
-  };
+  }; // add user details 
 
   const sortArray = (arr) => {
     return arr.sort((a, b) => {
