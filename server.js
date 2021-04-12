@@ -9,16 +9,19 @@ const port = 3001;
 
 const userData = [
     {
+        id: 1,
         name: 'Dave',
         avatar: '',
         credits: 500,
     },
     {
+        id: 2,
         name: 'Jane',
         avatar: '',
         credits: 400,
     },
     {
+        id: 3,
         name: 'John',
         avatar: '',
         credits: 600,
@@ -43,8 +46,8 @@ app.get('/leaderboard', async (req, res) => {
 
 app.post('/players/add-player', async (req, res) => {
     const imageObj = await axios.get('https://randomuser.me/api/');
-    userData.push({ ...req.body, avatar: imageObj.data.results[0].picture.thumbnail });
-    res.json({ ...req.body, avatar: imageObj.data.results[0].picture.thumbnail });
+    userData.push({ ...req.body, avatar: imageObj.data.results[0].picture.thumbnail, id: userData[userData.length - 1].id + 1 });
+    res.json(userData.pop());
 })
 
 app.listen(port, () => {
