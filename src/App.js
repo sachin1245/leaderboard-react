@@ -3,7 +3,7 @@ import Leaderboard from './components/Leaderboard';
 import Search from './components/Search';
 import AddUser from './components/AddUser';
 import { useState, useEffect, useCallback } from 'react';
-import axios from 'axios'
+import axios from 'axios';
 import { debounce } from 'lodash';
 
 function App() {
@@ -33,7 +33,7 @@ function App() {
         (res) => {
           setUserDataArray(sortArray([...userDataArray, res.data]));
         }
-      )
+      );
     } else {
       setShowValidation(true); // show validation error if one of the form field is empty
     }
@@ -51,18 +51,24 @@ function App() {
         return user.name.toLowerCase().startsWith(searchValue.toLowerCase());
       });
       setFilteredArray(sortArray(filteredUser));
-    }, 1000)
-  )
+    }, 1000) 
+    )
 
   const searchHandler = (event) => {
     const searchValue = event.target.value;
     debounceSearch(searchValue); //adding debounce to ensure multiple request are not fired when user types fast
   }
 
+  const deleteHandler = (id) => {
+    const userId = id;
+    axios.delete(`http://localhost:3001/delete-player/${id}`).then((res) => {
+      setUserDataArray(res.data);
+    });
+  }
   return (
     <div className="App">
       <Search searchHandler={searchHandler} />
-      <Leaderboard userData={filteredArray} />
+      <Leaderboard userData={filteredArray} deleteHandler={deleteHandler} />
       <div className="add-user-button-container">
         <button className="add-user-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick={() => { setShowAddUser(!showAddUser); setShowValidation(false) }}>
           {showAddUser ? 'Close Form' : 'Add User'}

@@ -47,7 +47,7 @@ app.get('/leaderboard', async (req, res) => {
 app.post('/players/add-player', async (req, res) => {
     const imageObj = await axios.get('https://randomuser.me/api/');
     userData.push({ ...req.body, avatar: imageObj.data.results[0].picture.thumbnail, id: userData[userData.length - 1].id + 1 });
-    res.json(userData.pop());
+    res.json(userData[userData.length-1]);
 })
 
 app.listen(port, () => {
