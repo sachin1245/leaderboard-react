@@ -36,3 +36,43 @@
     transform: rotate(360deg);
   }
 }
+
+
+@media screen and (max-width: 480px){
+  th, td {
+    width: 90px;
+    max-width: 90px;
+  }
+
+  tr > th:first-child{
+    width: 40px;
+    max-width: 40px;
+  }
+
+  tr > td:first-child {
+    width: 40px;
+    max-width: 40px;
+  }
+}
+
+@media screen and (min-width: 968px){
+  th, td {
+    min-width: 150px;
+  }
+}
+
+.ellipsis {
+  text-overflow: ellipsis;
+
+  /* Required for text-overflow to do anything */
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+img {
+  display: inline-block;
+}
+
+.sortable-field {
+  cursor: pointer;
+}

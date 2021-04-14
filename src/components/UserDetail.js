@@ -6,12 +6,12 @@ const UserDetail = ({ user, index }) => {
     return (
         <>
             <tr className="user-detail-row">
-                <td className="user-detail-index border px-8 py-4">{index}</td>
-                <td className="user-detail-avatar border px-8 py-4">
+                <td className="user-detail-index border px-2 md:px-4 py-4">{index}</td>
+                <td className="user-detail-avatar border px-2 md:px-4 py-4">
                     <img className="rounded-full" src={user.avatar} alt="" />
                 </td>
-                <td className="user-detail-name border px-8 py-4">{user.name}</td>
-                <td className="user-detail-credit border px-8 py-4">{new BigNumber(user.credits).toFixed()}</td>
+                <td className="user-detail-name border px-2 md:px-4 py-4 ellipsis">{user.name}</td>
+                <td className="user-detail-credit border px-2 md:px-4 py-4 ellipsis">{new BigNumber(user.credits).toFixed()}</td>
             </tr>
         </>
     )
