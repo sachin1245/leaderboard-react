@@ -10,3 +10,6 @@
 
 3. npm start
 4. go to http://localhost:3000 to access the leaderboard
+
+### Run test with coverage 
+5. npm run test-coverage
