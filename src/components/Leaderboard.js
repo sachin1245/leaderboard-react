@@ -8,10 +8,10 @@ const Leaderboard = ({ userData }) => {
             <table className="leaderboard-table shadow-lg bg-white mb-6 mt-8">
                 <thead>
                     <tr>
-                        <th className="bg-blue-100 border text-left px-8 py-4">#</th>
-                        <th className="bg-blue-100 border text-left px-8 py-4">Avatar</th>
-                        <th className="bg-blue-100 border text-left px-8 py-4">Name</th>
-                        <th className="bg-blue-100 border text-left px-8 py-4">Credits</th>
+                        <th className="bg-blue-100 border text-center px-8 py-4">#</th>
+                        <th className="bg-blue-100 border text-center px-8 py-4">Avatar</th>
+                        <th className="bg-blue-100 border text-center px-8 py-4">Name</th>
+                        <th className="bg-blue-100 border text-center px-8 py-4">Credits</th>
                     </tr>
                 </thead>
                 <tbody>

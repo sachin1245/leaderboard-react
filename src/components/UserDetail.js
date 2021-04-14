@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import BigNumber from "bignumber.js";
 
 const UserDetail = ({ user, index }) => {
 
@@ -10,7 +11,7 @@ const UserDetail = ({ user, index }) => {
                     <img className="rounded-full" src={user.avatar} alt="" />
                 </td>
                 <td className="user-detail-name border px-8 py-4">{user.name}</td>
-                <td className="user-detail-credit border px-8 py-4">{user.credits}</td>
+                <td className="user-detail-credit border px-8 py-4">{new BigNumber(user.credits).toFixed()}</td>
             </tr>
         </>
     )
